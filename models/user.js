@@ -11,7 +11,7 @@ let UserSchema = Schema({
 
 // Virtual
 UserSchema.virtual('url').get(function () {
-	return `/user/${this.id}`
+	return `/users/${this.id}`
 })
 
 UserSchema.virtual('fullname').get(function () {

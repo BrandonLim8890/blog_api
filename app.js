@@ -6,13 +6,14 @@ var logger = require('morgan')
 
 var indexRouter = require('./routes/index')
 var usersRouter = require('./routes/users')
+var postsRouter = require('./routes/posts')
 
 var app = express()
-
+require('dotenv').config()
 // mongoose setup
 const mongoose = require('mongoose')
 let mongoDB = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0-xkt8e.mongodb.net/${process.env.DB_DB}?retryWrites=true&w=majority`
-mongoose.connect(mongoDB, { useNewUrlParser: true })
+mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true })
 var db = mongoose.connection
 db.on('error', console.error.bind(console, 'MongoDB Connection Error: '))
 
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', indexRouter)
 app.use('/users', usersRouter)
+app.use('/posts', postsRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

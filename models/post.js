@@ -11,7 +11,7 @@ let PostSchema = Schema({
 
 // Virtual
 PostSchema.virtual('url').get(function () {
-	return `/post/${this.id}`
+	return `/posts/${this.id}`
 })
 
 module.exports = mongoose.model('Post', PostSchema)

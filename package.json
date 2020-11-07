@@ -8,10 +8,13 @@
     "serverstart": "DEBUG=blog_api:* npm run devstart"
   },
   "dependencies": {
+    "async": "^3.2.0",
+    "bcryptjs": "^2.4.3",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
+    "express-validator": "^6.6.1",
     "http-errors": "~1.6.3",
     "mongoose": "^5.10.9",
     "mongoose-type-email": "^1.0.13",

@@ -1,0 +1,21 @@
+<nav class="d-flex navbar-default p-0 pt-2 pb-2 navbar navbar-expand-lg">
+	<div
+		class="container-fluid justify-content-start d-flex align-items-baseline navbar navbar-collapse"
+		id="navbarSupportedContent"
+	>
+		<div class="navbar-header">
+			<a href="#" class="navbar-brand pb-0 pt-0">Guitar Collection</a>
+		</div>
+		<span class="mr-3">|</span>
+		<ul class="nav d-flex justify-content-center align-items-baseline">
+			<li class="mr-2"><a href="/" class="<%= active == 'index' ? 'active' : '' %>">Home</a></li>
+			<li class="mr-2 dropbtn">
+				<a href="/catalog/guitars" class="<%= active == 'guitars' ? 'active' : '' %>">Guitars</a>
+			</li>
+			<li class="mr-2"><a href="/catalog/brands" class="<%= active == 'brands' ? 'active' : '' %>">Brands</a></li>
+			<li class="mr-2">
+				<a href="/catalog/categories" class="<%= active == 'categories' ? 'active' : '' %>">Categories</a>
+			</li>
+		</ul>
+	</div>
+</nav>
