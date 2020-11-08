@@ -153,7 +153,7 @@ exports.post_delete = function (req, res, next) {
 		Post.findByIdAndDelete(req.params.id, function (err) {
 			if (err) return next(err)
 
-			res.redirect('/posts')
+			res.redirect(303, '/posts')
 		})
 	})
 }

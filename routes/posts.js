@@ -28,7 +28,7 @@ router.get('/:id', postController.post_get)
 // Handle delete button on post detail on DELETE
 router.delete('/:id', auth.verifyToken, postController.post_delete)
 
-// Handle submission of comment on ßPOST
+// Handle submission of comment on POST
 router.post('/:id', commentController.new_comment_post)
 
 module.exports = router

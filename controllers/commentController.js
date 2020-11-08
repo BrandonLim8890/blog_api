@@ -77,7 +77,7 @@ exports.delete_comment_delete = function (req, res, next) {
 		Comment.findByIdAndDelete(req.params.id, function (err) {
 			if (err) return next(err)
 
-			res.redirect(`/posts/${post_id}`)
+			res.redirect(303, `/posts/${post_id}`)
 		})
 	})
 }

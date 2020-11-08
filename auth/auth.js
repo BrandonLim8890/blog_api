@@ -54,6 +54,6 @@ exports.verifyToken = function (req, res, next) {
 			next()
 		})
 	} else {
-		next(createError(401))
+		next(new Error('Forbidden'))
 	}
 }
