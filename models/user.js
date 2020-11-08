@@ -1,5 +1,6 @@
 let mongoose = require('mongoose')
 require('mongoose-type-email')
+const bcrypt = require('bcryptjs')
 let Schema = mongoose.Schema
 
 let UserSchema = Schema({
@@ -17,5 +18,10 @@ UserSchema.virtual('url').get(function () {
 UserSchema.virtual('fullname').get(function () {
 	return `${this.first} ${this.last}`
 })
+
+// Method to ensure the log in has the correct credentials.
+UserSchema.methods.isValidPassword = function (password) {
+	return bcrypt.compare(password, this.password)
+}
 
 module.exports = mongoose.model('User', UserSchema)

@@ -8,6 +8,8 @@ var indexRouter = require('./routes/index')
 var usersRouter = require('./routes/users')
 var postsRouter = require('./routes/posts')
 
+require('./auth/auth')
+
 var app = express()
 require('dotenv').config()
 // mongoose setup
