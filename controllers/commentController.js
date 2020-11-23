@@ -19,7 +19,7 @@ exports.new_comment_post = [
 		// Create new comment
 		let comment = new Comment({
 			body: req.body.body,
-			time: new Date(),
+			time: new Date().toLocaleDateString(),
 			author: req.body.author,
 			post_id: req.params.id
 		})
@@ -59,7 +59,7 @@ exports.new_comment_post = [
 					},
 					function (err, results) {
 						if (err) return next(err)
-
+						console.log('post successful')
 						res.json({ title: results.post.title, post: results.post, comments: results.comments })
 					}
 				)
@@ -76,7 +76,6 @@ exports.delete_comment_delete = function (req, res, next) {
 
 		Comment.findByIdAndDelete(req.params.id, function (err) {
 			if (err) return next(err)
-
 			res.redirect(303, `/posts/${post_id}`)
 		})
 	})

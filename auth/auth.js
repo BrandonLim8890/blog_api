@@ -8,14 +8,13 @@ const ExtractJWT = require('passport-jwt').ExtractJwt
 // Passport middleware to handle user login
 passport.use(
 	'login',
-	new LocalStrategy((username, password, done) => {
-		User.findOne({ username: username }, (err, user) => {
-			console.log(user)
+	new LocalStrategy(async (username, password, done) => {
+		User.findOne({ username: username }, async (err, user) => {
 			if (err) return done(err)
 
 			if (!user) return done(null, false, { message: 'User not found' })
 
-			const validate = user.isValidPassword(password)
+			const validate = await user.isValidPassword(password)
 			if (!validate) return done(null, false, { message: 'Wrong Password' })
 
 			return done(null, user, { message: 'Logged in Successfully' })

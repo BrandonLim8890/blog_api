@@ -12,13 +12,17 @@ router.post('/login', function (req, res, next) {
 	passport.authenticate('login', (err, user, info) => {
 		if (err) return next(err)
 
-		if (!user) return next(new Error('User not found'))
+		if (!user) {
+			return res.json({ message: info.message })
+		}
+
+		console.log(info.message)
 
 		req.login(user, { session: false }, (err) => {
 			if (err) return next(err)
 
 			const body = { _id: user._id, username: user.username }
-			const token = jwt.sign({ user: body }, 'TOP_SECRET')
+			const token = jwt.sign({ user: body }, 'TOP_SECRET', { expiresIn: '1d' })
 
 			return res.json({ token })
 		})

@@ -126,7 +126,7 @@ exports.post_get = function (req, res, next) {
 	async.parallel(
 		{
 			post: function (callback) {
-				Post.findById(req.params.id).exec(callback)
+				Post.findById(req.params.id).populate('author').exec(callback)
 			},
 			comments: function (callback) {
 				Comment.find({ post_id: req.params.id }).exec(callback)
@@ -153,7 +153,7 @@ exports.post_delete = function (req, res, next) {
 		Post.findByIdAndDelete(req.params.id, function (err) {
 			if (err) return next(err)
 
-			res.redirect(303, '/posts')
+			res.sendStatus(200)
 		})
 	})
 }
